@@ -164,6 +164,11 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
+         * Add on here
+         */
+        SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class,
+
+        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
