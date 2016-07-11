@@ -7,10 +7,8 @@
   position: relative;
   padding: $navbar-padding-y $navbar-padding-x;
   @include clearfix;
+  border-bottom: 1px solid #e5e5e5;
 
-  @include media-breakpoint-up(sm) {
-    @include border-radius($navbar-border-radius);
-  }
 }
 
 
@@ -23,9 +21,6 @@
 .navbar-full {
   z-index: $zindex-navbar;
 
-  @include media-breakpoint-up(sm) {
-    @include border-radius(0);
-  }
 }
 
 // Fix the top/bottom navbars when screen real estate supports it
@@ -36,10 +31,6 @@
   left: 0;
   z-index: $zindex-navbar-fixed;
 
-  // Undo the rounded corners
-  @include media-breakpoint-up(sm) {
-    @include border-radius(0);
-  }
 }
 
 .navbar-fixed-top {
@@ -56,10 +47,6 @@
   z-index: $zindex-navbar-sticky;
   width: 100%;
 
-  // Undo the rounded corners
-  @include media-breakpoint-up(sm) {
-    @include border-radius(0);
-  }
 }
 
 
@@ -110,7 +97,6 @@
   line-height: 1;
   background: none;
   border: $border-width solid transparent;
-  @include border-radius($btn-border-radius);
 
   @include hover-focus {
     text-decoration: none;
