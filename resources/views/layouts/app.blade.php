@@ -1,8 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
- @include('includes.head')
+    @include('includes.head')
 <body id="app-layout">
+
    @include('includes.navbar')
+
+    @if(Session::has('status'))
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success alert-dismissable text-xs-center">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    {{ Session::get('status') }}
+                </div>
+            </div>
+        </div>
+    @endif
+
+    @if(Session::has('success_message'))
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success alert-dismissable text-xs-center">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    {{ Session::get('success_message') }}
+                </div>
+            </div>
+        </div>
+    @endif
+
     @if (count($errors) > 0)
         <div class="alert alert-danger text-xs-center">
             <ul>

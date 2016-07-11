@@ -14,6 +14,14 @@ class CreateBlogsTable extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('author_id')->unsigned();
+            $table->foreign('author_id')
+                ->references('id')->on('users');
+            $table->string('title', 150);
+            $table->text('content');
+            $table->text('description', 300)->nullable();
+            $table->string('image')->nullable();
+            $table->string('meta_tags')->nullable();
             $table->timestamps();
         });
     }

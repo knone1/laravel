@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'Register')
+
+@section('meta_tag')
+
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -67,4 +73,9 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js_assets')
+@parent
+
 @endsection

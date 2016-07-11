@@ -26,12 +26,19 @@
       <a class="nav-link" href="{{ url('/register') }}">Register</a>
     </li>
     @else
-    <li class="nav-item">
-      <a class="nav-link" href="#">Pricing</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">About</a>
-    </li>
+                <li class="nav-item dropdown">
+                <a href="#" class="nav-link btn  dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1" role="button" style="font-size:1rem;" aria-haspopup="true" aria-expanded="false">
+                <img src="{{ Auth::user()->pic }}" width="34px" height="34px" style="margin: -7px 0;display:inline-block;vertical-align:top;">&ensp;<span class="caret "></span>{{ Auth::user()->username }}</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                
+                  <li><a class="dropdown-item" href=""><i class="fa fa-btn fa-sign-out"></i>My Setting</a>
+                  <li><a class="dropdown-item" href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+
+                  <li class="dropdown-divider">Nav header</li>
+                  <li><a class="dropdown-item" href="#">Separated link</a></li>
+                  <li><a class="dropdown-item" href="#">One more separated link</a></li>
+                </ul>
+              </li>
     @endif
   </ul>
 </nav>
