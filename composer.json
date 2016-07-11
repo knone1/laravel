@@ -28,11 +28,6 @@
             "App\\": "app/"
         }
     },
-    "extra": {
-        "installer-paths": {
-            "resources/assets/{$name}/": ["twbs\\bootstrap"]
-        }
-    },
     "autoload-dev": {
         "classmap": [
             "tests/TestCase.php"

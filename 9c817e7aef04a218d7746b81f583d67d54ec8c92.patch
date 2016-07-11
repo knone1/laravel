@@ -1,0 +1,127 @@
+From 9c817e7aef04a218d7746b81f583d67d54ec8c92 Mon Sep 17 00:00:00 2001
+From: Taylor Otwell <taylorotwell@gmail.com>
+Date: Sun, 10 Jul 2016 15:31:23 -0500
+Subject: [PATCH] use new auth features
+
+---
+ app/Http/Controllers/Auth/AuthController.php     | 71 ------------------------
+ app/Http/Controllers/Auth/PasswordController.php | 32 -----------
+ 2 files changed, 103 deletions(-)
+ delete mode 100644 app/Http/Controllers/Auth/AuthController.php
+ delete mode 100644 app/Http/Controllers/Auth/PasswordController.php
+
+diff --git a/app/Http/Controllers/Auth/AuthController.php b/app/Http/Controllers/Auth/AuthController.php
+deleted file mode 100644
+index 4a94828..0000000
+--- a/app/Http/Controllers/Auth/AuthController.php
++++ /dev/null
+@@ -1,71 +0,0 @@
+-<?php
+-
+-namespace App\Http\Controllers\Auth;
+-
+-use App\User;
+-use Validator;
+-use App\Http\Controllers\Controller;
+-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+-
+-class AuthController extends Controller
+-{
+-    /*
+-    |--------------------------------------------------------------------------
+-    | Registration & Login Controller
+-    |--------------------------------------------------------------------------
+-    |
+-    | This controller handles the registration of new users, as well as the
+-    | authentication of existing users. By default, this controller uses
+-    | a simple trait to add these behaviors. Why don't you explore it?
+-    |
+-    */
+-
+-    use AuthenticatesAndRegistersUsers;
+-
+-    /**
+-     * Where to redirect users after login / registration.
+-     *
+-     * @var string
+-     */
+-    protected $redirectTo = '/home';
+-
+-    /**
+-     * Create a new authentication controller instance.
+-     *
+-     * @return void
+-     */
+-    public function __construct()
+-    {
+-        $this->middleware('guest', ['except' => 'logout']);
+-    }
+-
+-    /**
+-     * Get a validator for an incoming registration request.
+-     *
+-     * @param  array  $data
+-     * @return \Illuminate\Contracts\Validation\Validator
+-     */
+-    protected function validator(array $data)
+-    {
+-        return Validator::make($data, [
+-            'name' => 'required|max:255',
+-            'email' => 'required|email|max:255|unique:users',
+-            'password' => 'required|min:6|confirmed',
+-        ]);
+-    }
+-
+-    /**
+-     * Create a new user instance after a valid registration.
+-     *
+-     * @param  array  $data
+-     * @return User
+-     */
+-    protected function create(array $data)
+-    {
+-        return User::create([
+-            'name' => $data['name'],
+-            'email' => $data['email'],
+-            'password' => bcrypt($data['password']),
+-        ]);
+-    }
+-}
+diff --git a/app/Http/Controllers/Auth/PasswordController.php b/app/Http/Controllers/Auth/PasswordController.php
+deleted file mode 100644
+index 66f7736..0000000
+--- a/app/Http/Controllers/Auth/PasswordController.php
++++ /dev/null
+@@ -1,32 +0,0 @@
+-<?php
+-
+-namespace App\Http\Controllers\Auth;
+-
+-use App\Http\Controllers\Controller;
+-use Illuminate\Foundation\Auth\ResetsPasswords;
+-
+-class PasswordController extends Controller
+-{
+-    /*
+-    |--------------------------------------------------------------------------
+-    | Password Reset Controller
+-    |--------------------------------------------------------------------------
+-    |
+-    | This controller is responsible for handling password reset requests
+-    | and uses a simple trait to include this behavior. You're free to
+-    | explore this trait and override any methods you wish to tweak.
+-    |
+-    */
+-
+-    use ResetsPasswords;
+-
+-    /**
+-     * Create a new password controller instance.
+-     *
+-     * @return void
+-     */
+-    public function __construct()
+-    {
+-        $this->middleware($this->guestMiddleware());
+-    }
+-}
