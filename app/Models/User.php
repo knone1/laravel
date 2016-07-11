@@ -118,7 +118,7 @@ class User extends Authenticatable
             'username' => $facebook_user['name'],
             'email' => $facebook_user['email'],
             'facebook_user_id' => $facebook_user['id'],
-            'password' => bcrypt(static::generatePassword(8)),
+            'password' => bcrypt(parent::generatePassword(8)),
         ]);
 
     }
@@ -138,28 +138,31 @@ class User extends Authenticatable
         return $this->hasOne(Blogs::class, 'author_id');
     }
 
-    public function isAdmin($query, $id)
+    public function isAdmin($id)
     {
-        //  switch ()
-        $role_gets = static::where('role_level', $id)->value('role_id');
+        try {
 
-            switch ($role_gets) {
-                case 0:
-                    return false;
-                    break;
-                case 4:
-                    return true;
-                    break;
-                case 5:
-                    return true;
-                    break;
+            return ! is_null( static::where('role_level', $id)->get() );
+
+        } catch (Exception $e) {
+
+            return false;
+
         }
 
     }
 
-    public function AdminS($userID)
+    public function getId($id)
     {
-        return UserRole::where('user_id', '=', $userID)->get();
+        try {
+            return ! is_null( static::where('id', '=', $id)->first() );
+
+        } catch (Exception $e) {
+
+            return false;
+
+        }
+
     }
 
 }
