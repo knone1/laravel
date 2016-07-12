@@ -18,7 +18,9 @@ class CreateBlogCategoriesTable extends Migration
             $table->text('description')->nullable();
             $table->integer('cat_id')->unsigned();
             $table->foreign('cat_id')
-                ->references('id')->on('blogs');
+                ->references('id')->on('blogs')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

@@ -129,7 +129,7 @@ class AdminBlogController extends Controller
             return redirect()->route('blog.index')->with('status', 'error Deleted');
         }
 
-        return response()->json(array('status' => 'Sucess Blog Deleted',
-           'id' => $id));
+        return response()->json(['status' => 'Sucess Blog Deleted',
+           'id' => $id]);
     }
 }

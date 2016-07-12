@@ -16,7 +16,9 @@ class CreateBlogsTable extends Migration
             $table->increments('id');
             $table->integer('author_id')->unsigned();
             $table->foreign('author_id')
-                ->references('id')->on('users');
+                ->references('id')->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->string('title', 150);
             $table->text('content');
             $table->text('description', 300)->nullable();

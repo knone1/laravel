@@ -113,14 +113,26 @@ class User extends Authenticatable
     public function newUser($facebook_user)
     {
 
-       // dd($facebook_user['name']);
+      //  dd($facebook_user['picture']['url']);
         return static::create([
             'username' => $facebook_user['name'],
             'email' => $facebook_user['email'],
             'facebook_user_id' => $facebook_user['id'],
             'password' => bcrypt(static::generatePassword(8)),
         ]);
+        
 
+    }
+    
+    /**
+     *  profile
+     *  facebook tweeter instagram
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function profile()
+    {
+        return $this->hasOne(Profiles::class, 'id');
     }
 
     /**

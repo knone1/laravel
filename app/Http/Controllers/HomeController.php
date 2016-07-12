@@ -8,6 +8,7 @@ use App\Models\User;
 
 class HomeController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
@@ -25,7 +26,7 @@ class HomeController extends Controller
      */
     public function index(User $user)
     {
-        //dd($user->isAdmin(2));
+        //dd($user->find(2)->profile->id);
 
         return view('index');
     }

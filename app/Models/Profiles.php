@@ -20,21 +20,6 @@ class Profiles extends Model
 
     protected $visible = ['facebook_user_id'];
 
-    protected $fillable = [
-        'access_token',
-        'facebook_user_id',
-        'email',
-        'first_name',
-        'last_name',
-        'bio',
-        'birthday',
-        'gender',
-        'verified',
-        'pic',
-        'timezone',
-        'user_profiles'
-    ];
-
     /**
      *  fb alias
      *
@@ -43,8 +28,23 @@ class Profiles extends Model
     protected static $graph_node_field_aliases = [
         'id'               => 'facebook_user_id',
         'picture.data.url' => 'pic',
-        'graph_node_field_name' => 'user_profiles'
+        'graph_node_field_name' => 'profiles'
     ];
+
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'pic',
+        'bio',
+        'birthday',
+        'gender',
+        'timezone',
+        'access_token',
+        'verified',
+        'facebook_user_id'
+    ];
+
 
     /**
      * fb field fillable
@@ -52,17 +52,17 @@ class Profiles extends Model
      * @var array
      */
     protected static $graph_node_fillable_fields = [
-        'facebook_user_id',
-        'access_token',
-        'email',
         'first_name',
         'last_name',
+        'email',
+        'pic',
         'bio',
         'birthday',
         'gender',
-        'pic',
+        'timezone',
+        'access_token',
         'verified',
-        'timezone'
+        'facebook_user_id'
     ];
 
     /**
@@ -94,8 +94,7 @@ class Profiles extends Model
      */
     public function newProfile($facebook_user, $token)
     {
-       // dd($facebook_user['name']);
-
+       
         return static::create([
                 'facebook_user_id' => $facebook_user['id'],
                 'first_name' => $facebook_user['first_name'],
@@ -104,7 +103,7 @@ class Profiles extends Model
                 'bio' => $facebook_user['bio'],
                 'birthday' => $facebook_user['birthday'],
                 'gender' => $facebook_user['gender'],
-                'picture.data.url' => $facebook_user['picture']['url'],
+                'pic' => $facebook_user['picture']['url'],
                 'timezone' => $facebook_user['timezone'],
                 'verified' => $facebook_user['verified'],
                 'access_token' => $token

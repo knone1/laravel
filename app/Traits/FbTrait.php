@@ -55,7 +55,6 @@ trait FbTrait
         }
 
         // Convert the response to a `Facebook/GraphNodes/GraphUser` collection
-
         $facebook_user = $response->getGraphNode();
 
         $user_check = $user->where('email', '=', $facebook_user['email'])->first();
@@ -64,15 +63,13 @@ trait FbTrait
         /*
          * todo add mail send to user register
          */
-
         if ($user_check === null || $fb_check === null) {
 
-                $user->newUser($facebook_user);
-                $profile->newProfile($facebook_user, $token);
+            $profile->newProfile($facebook_user, $token);
 
-            $auth->login($user);
-            return redirect()->intended('/');
 
+            $this->guard()->login($user->newUser($facebook_user));
+            return redirect($this->redirectPath());
            }
 
         // Create the user if it does not exist or update the existing entry.
@@ -83,8 +80,8 @@ trait FbTrait
         $auth->login($user);
 
         return redirect('/')->with('status', 'Successfully logged in');
+    
     }
-
 
 }
 
