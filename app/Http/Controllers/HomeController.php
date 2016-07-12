@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index']]);
+     //   $this->middleware(['guest', 'auth']);
     }
 
     /**
@@ -23,8 +23,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
+        //dd($user->isAdmin(2));
+
         return view('index');
     }
 }

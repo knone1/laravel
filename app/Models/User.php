@@ -118,7 +118,7 @@ class User extends Authenticatable
             'username' => $facebook_user['name'],
             'email' => $facebook_user['email'],
             'facebook_user_id' => $facebook_user['id'],
-            'password' => bcrypt(parent::generatePassword(8)),
+            'password' => bcrypt(static::generatePassword(8)),
         ]);
 
     }
@@ -130,7 +130,7 @@ class User extends Authenticatable
      */
     public function roles()
     {
-        return $this->hasOne(Roles::class, 'id');
+        return $this->hasOne(Roles::class, 'role_user_id');
     }
 
     public function blog()
@@ -142,7 +142,7 @@ class User extends Authenticatable
     {
         try {
 
-            return ! is_null( static::where('role_level', $id)->get() );
+            return ! is_null( Roles::where('role_user_id', '=', $id)->first() );
 
         } catch (Exception $e) {
 

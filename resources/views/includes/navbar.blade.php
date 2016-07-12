@@ -1,5 +1,5 @@
 <div class="container">
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-light bg-white">
   <a class="navbar-brand" href="#">Navbar</a>
   <ul class="nav navbar-nav">
     <li class="nav-item active">
@@ -30,7 +30,9 @@
                 <a href="#" class="nav-link btn  dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1" role="button" style="font-size:1rem;" aria-haspopup="true" aria-expanded="false">
                 <img src="{{ Auth::user()->pic }}" width="34px" height="34px" style="margin: -7px 0;display:inline-block;vertical-align:top;">&ensp;<span class="caret "></span>{{ Auth::user()->username }}</a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                
+                @if ( Auth::user()->isAdmin(Auth::user()->id) )
+                <li><a class="dropdown-item" href="{{ route('admin.index') }}">Panel Admin</a></li>
+                @endif
                   <li><a class="dropdown-item" href=""><i class="fa fa-btn fa-sign-out"></i>My Setting</a>
                   <li><a class="dropdown-item" href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
 

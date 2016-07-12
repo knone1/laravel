@@ -17,8 +17,8 @@ Route::get('/facebook/callback', 'Auth\RegisterController@fbcallback');
 
 Route::auth();
 
-Route::resource('admin', 'admin\AdminController');
+Route::resource('admin', 'Admin\AdminController');
 
-Route::resource('admin/blog', 'admin\AdminBlogController');
+Route::resource('blog', 'Admin\Blog\AdminBlogController');
 
-Route::resource('admin/blogcategory', 'admin\AdminBlogCategoryController');
+Route::resource('admin_blogcategory', 'admin\blog\AdminBlogCategoryController');

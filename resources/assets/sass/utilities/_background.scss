@@ -10,6 +10,10 @@
   background-color: $gray-lightest;
 }
 
+.bg-white {
+  background-color: $white;
+}
+
 @include bg-variant('.bg-primary', $brand-primary);
 
 @include bg-variant('.bg-success', $brand-success);

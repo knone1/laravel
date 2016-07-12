@@ -16,7 +16,7 @@ class Profiles extends Model
      *
      * @var string
      */
-    protected $table = 'user_profiles';
+    protected $table = 'profiles';
 
     protected $visible = ['facebook_user_id'];
 

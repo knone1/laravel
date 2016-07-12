@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Blog;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class AdminBlogController extends Controller
+class AdminBlogCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
