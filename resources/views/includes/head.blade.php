@@ -13,7 +13,20 @@
  	<link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet"> 
 
 @section('css_assets')
-
+<style type="text/css">
+	.grow img {
+  width: 100%;
+  height: 180px;
+}
+ 
+.lazy{
+            display: block;
+            height: 180px;
+            width: 100%;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+</style>
 @show
 
 </head>

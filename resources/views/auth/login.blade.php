@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="col-md-5  offset-md-3" style="padding-top: 100px;">
+            <div class="col-md-4  offset-md-4" style="padding-top: 100px;">
             
                 <div class="card">
                 <div class="card-header">Login</div>
