@@ -8,7 +8,6 @@
   padding: $navbar-padding-y $navbar-padding-x;
   @include clearfix;
   border-bottom: 1px solid #e5e5e5;
-
 }
 
 
@@ -136,7 +135,6 @@
 
   .nav-link {
     display: block;
-    padding-top:    .425rem;
     padding-bottom: .425rem;
 
     + .nav-link {
@@ -158,13 +156,18 @@
       color: $navbar-light-active-color;
     }
   }
+  
 
   .navbar-nav {
     .nav-link {
       color: $navbar-light-color;
+      font-size: 16px;
+      font-weight: 600;
+      border-top: 3px solid transparent;
 
       @include hover-focus {
         color: $navbar-light-hover-color;
+        border-top: 3px solid #19b4cf;
       }
     }
 

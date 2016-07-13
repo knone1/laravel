@@ -1,5 +1,5 @@
-<div class="container">
 <nav class="navbar navbar-light bg-white">
+<div class="container">
   <a class="navbar-brand" href="#">Navbar</a>
   <ul class="nav navbar-nav">
     <li class="nav-item active">
@@ -43,5 +43,5 @@
               </li>
     @endif
   </ul>
-</nav>
 </div>
+</nav>

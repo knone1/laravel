@@ -31,6 +31,11 @@ class Profiles extends Model
         'graph_node_field_name' => 'profiles'
     ];
 
+    /**
+     * mass assign attribute
+     *
+     * @var array
+     */
     protected $fillable = [
         'first_name',
         'last_name',
@@ -81,16 +86,22 @@ class Profiles extends Model
         'verified' => 'boolean'
     ];
 
+    /**
+     * Eloquent BelongTo Relations
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
     /**
-     * Return next post after this one or null.
+     * Create new profile base on auth
      *
-     * @param Tag $tag
-     * @return Post
+     * @param $facebook_user
+     * @param $token
+     * @return static
      */
     public function newProfile($facebook_user, $token)
     {

@@ -15,9 +15,12 @@ use Illuminate\Auth\AuthManager as Auth;
 trait FbTrait
 {
     /**
-     * @param Request $request
-     * @param LaravelFacebookSdk $fb
-     * @return \Illuminate\Http\RedirectResponse
+     *  fb call funtion
+     *  $request
+     *  $fb
+     *  $user
+     *  $profile
+     *  $auth
      */
     public function fbcallback(Request $request, LaravelFacebookSdk $fb, User $user, Profiles $profile, Auth $auth)
     {

@@ -20,9 +20,10 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * main page
      *
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(User $user)
     {

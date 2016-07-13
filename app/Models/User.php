@@ -32,6 +32,8 @@ class User extends Authenticatable
     ];
 
     /**
+     *  aliases fb graph node
+     *
      * @var array
      */
     protected static $graph_node_field_aliases = [
@@ -40,6 +42,11 @@ class User extends Authenticatable
         'graph_node_field_name' => 'users'
     ];
 
+    /**
+     *  fillable field of graph node
+     *
+     * @var array
+     */
     protected static $graph_node_fillable_fields = [
         'facebook_user_id',
         'username',
@@ -105,10 +112,10 @@ class User extends Authenticatable
     }
 
     /**
-     * Return next post after this one or null.
+     *  create new user
      *
-     * @param Tag $tag
-     * @return Post
+     * @param $facebook_user
+     * @return static
      */
     public function newUser($facebook_user)
     {
@@ -123,10 +130,9 @@ class User extends Authenticatable
         
 
     }
-    
+
     /**
-     *  profile
-     *  facebook tweeter instagram
+     * Eloquent HasOne Relations
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -136,7 +142,7 @@ class User extends Authenticatable
     }
 
     /**
-     *  user roles
+     * Eloquent HasOne Relations
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -145,11 +151,22 @@ class User extends Authenticatable
         return $this->hasOne(Roles::class, 'role_user_id');
     }
 
+    /**
+     * Eloquent HasOne Relations
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function blog()
     {
         return $this->hasOne(Blogs::class, 'author_id');
     }
 
+    /**
+     * The Attribute for checking is user har role
+     *
+     * @param $id int
+     * @return bool true or false
+     */
     public function isAdmin($id)
     {
         try {
@@ -164,17 +181,5 @@ class User extends Authenticatable
 
     }
 
-    public function getId($id)
-    {
-        try {
-            return ! is_null( static::where('id', '=', $id)->first() );
-
-        } catch (Exception $e) {
-
-            return false;
-
-        }
-
-    }
 
 }

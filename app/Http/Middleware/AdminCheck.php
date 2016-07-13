@@ -13,12 +13,13 @@ class AdminCheck
     {
         $this->user = $user;
     }
+
     /**
-     * Handle an incoming request.
+     * Middleware is admin check if has role
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * @param $request
+     * @param Closure $next
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function handle($request, Closure $next)
     {
