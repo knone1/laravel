@@ -21,7 +21,7 @@
     <!-- JavaScripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
-    <script src="{{ URL::asset('js/bootstrap.js') }}" crossorigin="anonymous"></script>
+    <script src="{{ URL::asset('js/bootstrap.js') }}"></script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>

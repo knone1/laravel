@@ -21,4 +21,8 @@ Route::resource('admin', 'Admin\AdminController');
 
 Route::resource('blog', 'Admin\Blog\AdminBlogController');
 
-Route::resource('admin_blogcategory', 'admin\blog\AdminBlogCategoryController');
+Route::resource('blog_category', 'Admin\Blog\AdminBlogCategoryController');
+
+Route::resource('admin_role', 'Admin\Setting\AdminRoleController');
+
+Route::resource('admin_setting', 'Admin\Setting\AdminSettingController');
