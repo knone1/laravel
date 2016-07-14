@@ -16,7 +16,8 @@ class CreateSettingsTable extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
             $table->string('setting_name', 30)->nullable();
-            $table->longtext('setting_value')->default(none);
+            $table->string('setting_desc', 309)->nullable();
+            $table->longtext('setting_value');
         });
     }
 

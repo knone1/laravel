@@ -13,38 +13,39 @@ class SettingsTableSeeder extends Seeder
     {
 
          DB::table('settings')->insert([
-            'setting_name' => 'site_name',
-            'value' => '1'
+            'setting_name' => 'Site Name',
+            'setting_desc' => 'The name of the site',
+            'setting_value' => 'Site Title'
         ]);
 
          DB::table('settings')->insert([
-            'setting_name' => 'Site_Description',
-            'value' => '1'
+            'setting_name' => 'Register',
+            'setting_desc' => 'Enable <b>1</b> Disable <b>0</b> the Registration',
+            'setting_value' => '1'
         ]);
 
          DB::table('settings')->insert([
-            'setting_name' => 'users_can_register',
-            'value' => '1'
-        ]);
-
-         DB::table('settings')->insert([
-            'setting_name' => 'email_send_password',
-            'value' => '0'
+            'setting_name' => 'Emial Activation',
+            'setting_desc' => 'Enable <b>1</b> Disable <b>0</b> the Email Send to user',
+            'setting_value' => '0'
         ]);
          
          DB::table('settings')->insert([
-            'setting_name' => 'admin_email',
-            'value' => '0'
+            'setting_name' => 'Site Email',
+            'setting_desc' => 'The email of the site',
+            'setting_value' => 'me@localhost.dev'
         ]);
 
          DB::table('settings')->insert([
             'setting_name' => 'sitemap',
-            'value' => '0'
+            'setting_desc' => 'Enable <b>1</b> Disable <b>0</b> the Sitemap',
+            'setting_value' => '0'
         ]);
 
          DB::table('settings')->insert([
             'setting_name' => 'rss',
-            'value' => '0'
+            'setting_desc' => 'Enable <b>1</b> Disable <b>0</b> the RSS',
+            'setting_value' => '0'
         ]);
     }
 }

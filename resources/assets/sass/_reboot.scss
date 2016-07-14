@@ -78,7 +78,9 @@ body {
   // By default, `<body>` has no `background-color` so we set one as a best practice.
   background-color: $body-bg;
   -webkit-font-smoothing: antialiased;
+  padding-top: 51px;
 }
+
 
 // Suppress the focus outline on elements that cannot be accessed via keyboard.
 // This prevents an unwanted focus outline from appearing around elements that

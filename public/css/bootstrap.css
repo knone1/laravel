@@ -260,7 +260,8 @@ body {
   line-height: 1.34;
   color: #373a3c;
   background-color: #fff;
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased;
+  padding-top: 51px; }
 
 [tabindex="-1"]:focus {
   outline: none !important; }

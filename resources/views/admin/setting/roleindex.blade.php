@@ -1,13 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Admin Panel')
+@section('title', 'Blog List')
 
 @section('meta_tag')
 
 @endsection
 
 @section('content')
-
 
 <div class="container-fluid">
       <div class="row">
@@ -29,7 +28,7 @@
                   <a href="#"><i class="fa fa-gift fa-lg"></i> General Setting <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="products">
-                    <li><a href="{{ route('admin_setting.index') }}">Site Setting</a></li>
+                    <li><a href="{{ route('admin_setting.create') }}">Site Setting</a></li>
                     <li><a href="#">General</a></li>
                     <li><a href="#">Buttons</a></li>
                     <li><a href="#">Tabs & Accordions</a></li>
@@ -77,168 +76,147 @@
 </div>
         </div>
 
-        <div class="col-md-12" style="padding-left:270px;">
-          <h1 class="page-header">Dashboard</h1>
-
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-fluid" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-fluid" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-fluid" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-fluid" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
-
-          <h2>Section title</h2>
-          <div class="table-responsive">
+        <div class="col-md-9" style="padding-left:270px;">
+          <h5>Section title</h5>
+                                    
+<div id="form-response"></div>
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
+                  <th>Index</th>
+                  <th>Title</th>
+                  <th>View</th>
+                  <th>Remove</th>
+                  <th>Edit</th>
                 </tr>
               </thead>
-              <tbody>
+    @foreach($posts as $post)
                 <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
+                  <td>{{ $post->id }}</td>
+                  <td>{{ $post->title }}</td>
+                  <td><a  class="btn btn-primary btn-sm " href="" role="button">visit</a> </td>
+                  <td>
+  <form id="form-{{$post->id}}" class="review-delete" method="POST" action="">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+      <input name="_method" type="hidden" value="DELETE">
+     <button id="deletes" type="submit" class="btn btn-primary btn-sm" >x</button>
+        <input type="hidden" name="id" value="{{ $post->id }}">
+  </form>
+                </td>
+                  <td><a href="{{ route('blog.edit', ['id'=>$post->id]) }}">Edit</a> </td>
                 </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>Praesent</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                  <td>cursus</td>
-                  <td>ante</td>
-                </tr>
-                <tr>
-                  <td>1,004</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                  <td>Sed</td>
-                  <td>nisi</td>
-                </tr>
-                <tr>
-                  <td>1,005</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                  <td>sem</td>
-                  <td>at</td>
-                </tr>
-                <tr>
-                  <td>1,006</td>
-                  <td>nibh</td>
-                  <td>elementum</td>
-                  <td>imperdiet</td>
-                  <td>Duis</td>
-                </tr>
-                <tr>
-                  <td>1,007</td>
-                  <td>sagittis</td>
-                  <td>ipsum</td>
-                  <td>Praesent</td>
-                  <td>mauris</td>
-                </tr>
-                <tr>
-                  <td>1,008</td>
-                  <td>Fusce</td>
-                  <td>nec</td>
-                  <td>tellus</td>
-                  <td>sed</td>
-                </tr>
-                <tr>
-                  <td>1,009</td>
-                  <td>augue</td>
-                  <td>semper</td>
-                  <td>porta</td>
-                  <td>Mauris</td>
-                </tr>
-                <tr>
-                  <td>1,010</td>
-                  <td>massa</td>
-                  <td>Vestibulum</td>
-                  <td>lacinia</td>
-                  <td>arcu</td>
-                </tr>
-                <tr>
-                  <td>1,011</td>
-                  <td>eget</td>
-                  <td>nulla</td>
-                  <td>Class</td>
-                  <td>aptent</td>
-                </tr>
-                <tr>
-                  <td>1,012</td>
-                  <td>taciti</td>
-                  <td>sociosqu</td>
-                  <td>ad</td>
-                  <td>litora</td>
-                </tr>
-                <tr>
-                  <td>1,013</td>
-                  <td>torquent</td>
-                  <td>per</td>
-                  <td>conubia</td>
-                  <td>nostra</td>
-                </tr>
-                <tr>
-                  <td>1,014</td>
-                  <td>per</td>
-                  <td>inceptos</td>
-                  <td>himenaeos</td>
-                  <td>Curabitur</td>
-                </tr>
-                <tr>
-                  <td>1,015</td>
-                  <td>sodales</td>
-                  <td>ligula</td>
-                  <td>in</td>
-                  <td>libero</td>
-                </tr>
-              </tbody>
+    @endforeach
             </table>
+
+            <div class="text-xs-center">
+              
+              {{ $posts->links() }}
+
+            </div>
+            
           </div>
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <b>Publish</b>
+                    </div>
+                    <div class="card-block">
+                        <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">
+                            Publish<br/>
+                            Publish<br/>
+                        </p>
+                        <a href="#" class="btn btn-primary text-xs-right">Trash</a>
+                    </div>
+                </div>
+
+                    <form id="catForm" class="form-signin" method="POST" action="">
+                    {{ csrf_field() }}
+                    <div class="input-group {{ $errors->has('title') ? ' has-error' : '' }}"">
+                    @if ($errors->has('title'))
+                            <span class="help-block">
+                    <strong>{{ $errors->first('title') }}</strong>
+                    </span>
+                    @endif
+                      <input id="catTitle" name="title" type="text" class="form-control" placeholder="name category..." value="title" required autofocus>
+                      <span class="input-group-btn">
+                        <button id="catBut" class="btn btn-secondary" type="submit">save</button>
+                      </span>
+                    </div>
+                    </form>
+
+                    <div class="card">
+                    <div class="card-header">
+                        <b>Category</b>
+                    </div>
+                    <div class="card-block">
+
+                        <p class="card-text">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-expanded="true"><b>Category</b></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"><b>Tags</b></a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab" style="padding: 5px;">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="">
+                                        Blog Mu
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <p>Food truck fixie locavore, </p>
+                            </div>
+                        </div>
+                        </p>
+                        <a href="#" class="btn btn-primary text-xs-right">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
         </div>
       </div>
-    </div>
 
 
 @endsection
 
 @section('js_assets')
 @parent
+
+    <script type="text/javascript">
+
+
+    $(document).ready(function() {
+
+    $('form.review-delete').on('click', function(event) {
+        // disable behaviour default dari tombol submit
+        event.preventDefault();
+        // hapus data buku dengan ajax
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            dataType: 'json',
+            data: {
+                _method : 'DELETE',
+                _token : $('input[name=_token]').val(),
+                id : $('input[name=id]').val()
+            },
+            success: function( data ) {
+                $('#form-'+data.id).closest('tr').fadeOut(300, function() {$(this).remove()});
+                $("#form-response").html('<div class="alert alert-success text-center">' + data.status + '</div>')
+                                setTimeout(function () {
+                                    $('#form-response').fadeOut();
+                                }, 3000);
+            }
+        });
+        return false;
+    });
+    });
+            </script>
 
 @endsection
