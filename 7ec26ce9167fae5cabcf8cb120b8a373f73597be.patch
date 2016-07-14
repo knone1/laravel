@@ -1,0 +1,122 @@
+From 7ec26ce9167fae5cabcf8cb120b8a373f73597be Mon Sep 17 00:00:00 2001
+From: Taylor Otwell <taylorotwell@gmail.com>
+Date: Thu, 14 Jul 2016 09:36:17 -0500
+Subject: [PATCH] Tweak location of routes files.
+
+---
+ app/Http/routes.php                    | 16 ----------------
+ app/Providers/RouteServiceProvider.php | 20 +++++++++++++++++++-
+ routes/api.php                         | 19 +++++++++++++++++++
+ routes/web.php                         | 16 ++++++++++++++++
+ 4 files changed, 54 insertions(+), 17 deletions(-)
+ delete mode 100644 app/Http/routes.php
+ create mode 100644 routes/api.php
+ create mode 100644 routes/web.php
+
+diff --git a/app/Http/routes.php b/app/Http/routes.php
+deleted file mode 100644
+index 0b913d4..0000000
+--- a/app/Http/routes.php
++++ /dev/null
+@@ -1,16 +0,0 @@
+-<?php
+-
+-/*
+-|--------------------------------------------------------------------------
+-| Application Routes
+-|--------------------------------------------------------------------------
+-|
+-| This file is where you may define all of the routes that are handled
+-| by your application. Just tell Laravel the URIs it should respond
+-| to using a given Closure or controller and enjoy the fresh air.
+-|
+-*/
+-
+-Route::get('/', function () {
+-    return view('welcome');
+-});
+diff --git a/app/Providers/RouteServiceProvider.php b/app/Providers/RouteServiceProvider.php
+index d1f1447..fba5d9f 100644
+--- a/app/Providers/RouteServiceProvider.php
++++ b/app/Providers/RouteServiceProvider.php
+@@ -37,6 +37,8 @@ public function map()
+     {
+         $this->mapWebRoutes();
+ 
++        $this->mapApiRoutes();
++
+         //
+     }
+ 
+@@ -52,7 +54,23 @@ protected function mapWebRoutes()
+         Route::group([
+             'namespace' => $this->namespace, 'middleware' => 'web',
+         ], function ($router) {
+-            require app_path('Http/routes.php');
++            require base_path('routes/web.php');
++        });
++    }
++
++    /**
++     * Define the "api" routes for the application.
++     *
++     * These routes are typically stateless.
++     *
++     * @return void
++     */
++    protected function mapApiRoutes()
++    {
++        Route::group([
++            'namespace' => $this->namespace, 'middleware' => 'api',
++        ], function ($router) {
++            require base_path('routes/api.php');
+         });
+     }
+ }
+diff --git a/routes/api.php b/routes/api.php
+new file mode 100644
+index 0000000..9216057
+--- /dev/null
++++ b/routes/api.php
+@@ -0,0 +1,19 @@
++<?php
++
++/*
++|--------------------------------------------------------------------------
++| API Routes
++|--------------------------------------------------------------------------
++|
++| Here is where you can register API routes for your application. These
++| routes are loaded by the RouteServiceProvider within a group which
++| is assigned the "api" middleware group. Enjoy building your API!
++|
++*/
++
++Route::group([
++    'prefix' => 'api',
++    'middleware' => 'auth:api'
++], function () {
++    //
++});
+diff --git a/routes/web.php b/routes/web.php
+new file mode 100644
+index 0000000..23a8819
+--- /dev/null
++++ b/routes/web.php
+@@ -0,0 +1,16 @@
++<?php
++
++/*
++|--------------------------------------------------------------------------
++| Web Routes
++|--------------------------------------------------------------------------
++|
++| This file is where you may define all of the routes that are handled
++| by your application. Just tell Laravel the URIs it should respond
++| to using a given Closure or controller and enjoy the fresh air.
++|
++*/
++
++Route::get('/', function () {
++    return view('welcome');
++});
