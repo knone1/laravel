@@ -106,15 +106,16 @@ class Profiles extends Model
     public function newProfile($facebook_user, $token)
     {
        
+       
         return static::create([
                 'facebook_user_id' => $facebook_user['id'],
                 'first_name' => $facebook_user['first_name'],
                 'last_name' => $facebook_user['last_name'],
                 'email' => $facebook_user['email'],
-                'bio' => $facebook_user['bio'],
-                'birthday' => $facebook_user['birthday'],
-                'gender' => $facebook_user['gender'],
-                'pic' => $facebook_user['picture']['url'],
+                'bio' => isset($facebook_user['bio']) ? $facebook_user['bio'] : null,
+                'birthday' => isset($facebook_user['birthday']) ? $facebook_user['birthday'] : null,
+                'gender' => isset($facebook_user['gender']) ? $facebook_user['gender'] : null,
+                'pic' => isset($facebook_user['picture']['url']) ? $facebook_user['picture']['url'] : null,
                 'timezone' => $facebook_user['timezone'],
                 'verified' => $facebook_user['verified'],
                 'access_token' => $token

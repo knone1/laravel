@@ -58,6 +58,7 @@ class RegisterController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
 
+
     }
 
     /**
@@ -74,8 +75,25 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
         
-            /*
-            * todo add mail send to user register
-            */
+        /*
+        $user = User::create([
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
+
+        $user->setVerificationAttribute();
+        $data['verification'] = $user->verification;
+
+        Mail::send('emails.welcome', $data, function($message) use ($data)
+        {
+           $message->from('no-reply@sitename', "Site Name");
+            $message->subject("Welcome to ite Name");
+            $message->to($data['email']);
+        });
+        
+        return $user;
+        */
+
     }
 }

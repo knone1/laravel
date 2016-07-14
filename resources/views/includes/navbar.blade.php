@@ -16,6 +16,9 @@
     </li>
   </ul>
   <ul class="nav navbar-nav pull-xs-right">
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/knone1/laravel"><i class="fa fa-code-fork" aria-hidden="true"></i>fork <i class="fa fa-github-alt" aria-hidden="true"></i> @GITHUB</a></li>
+    </li>
     @if (Auth::guest())
     <li class="nav-item">
     <a class="nav-link" href="{{ Facebook::getLoginUrl(['user_photos', 'public_profile', 'email', 'user_birthday', 'user_friends','user_about_me', 'user_likes', 'user_posts', 'user_relationships', 'user_videos', 'manage_pages']) }}">FB Login</a></li>

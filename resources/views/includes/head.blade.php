@@ -26,6 +26,12 @@
             background-position: center center;
             background-repeat: no-repeat;
         }
+.thumb{
+            height: 30px;
+            width: 30px;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
 </style>
 @show
 

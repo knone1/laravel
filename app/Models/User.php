@@ -111,6 +111,15 @@ class User extends Authenticatable
         return $query->where(compact(['name']));
     }
 
+
+    public function setVerificationAttribute() {
+        if (isset($this->attributes['verified']) && $this->attributes['verified']) {
+            $this->attributes['verification'] = null;
+        } else {
+            $this->attributes['verification'] = md5(static::generatePassword(10) . time()*64);
+        }
+    }
+
     /**
      *  create new user
      *
@@ -119,8 +128,15 @@ class User extends Authenticatable
      */
     public function newUser($facebook_user)
     {
+        /*
+        Mail::send('emails.welcome', $data, function($message) use ($data)
+        {
+            $message->from('no-reply@sitename', "Site Name");
+            $message->subject("Welcome to ite Name");
+            $message->to($facebook_user['email']);
+        });
+        */
 
-      //  dd($facebook_user['picture']['url']);
         return static::create([
             'username' => $facebook_user['name'],
             'email' => $facebook_user['email'],

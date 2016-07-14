@@ -21,7 +21,7 @@
     <!-- JavaScripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
-    <script src="{{ URL::asset('bootstrap/dist/js/bootstrap.min.js') }}" crossorigin="anonymous"></script>
+    <script src="{{ URL::asset('js/bootstrap.js') }}" crossorigin="anonymous"></script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>
@@ -49,7 +49,7 @@
 
 <script type="text/javascript">
 $(function() {
-    $("img.lazy").lazyload({
+    $("img.lazy, img.thumb").lazyload({
         event : "sporty",
     	effect : "fadeIn"
     });
@@ -57,7 +57,8 @@ $(function() {
 
 $(window).bind("load", function() {
     var timeout = setTimeout(function() {
-        $("img.lazy").trigger("sporty")
+        $("img.lazy, img.thumb").trigger("sporty")
     }, 1000);
 });
+$('.dropdown-toggle').dropdown()
     </script>

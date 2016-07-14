@@ -60,6 +60,13 @@ trait FbTrait
         // Convert the response to a `Facebook/GraphNodes/GraphUser` collection
         $facebook_user = $response->getGraphNode();
 
+        //check if has valid account to avoid user register with unverified fb account
+        if ($facebook_user['verified'] != true){
+
+            return redirect('/')->with('status', 'Please verified your Facebook Account');
+
+        }
+
         $user_check = $user->where('email', '=', $facebook_user['email'])->first();
         $fb_check = $profile->where('facebook_user_id', '=', $facebook_user['id'])->first();
 
@@ -70,9 +77,10 @@ trait FbTrait
 
             $profile->newProfile($facebook_user, $token);
 
-
             $this->guard()->login($user->newUser($facebook_user));
+
             return redirect($this->redirectPath());
+
            }
 
         // Create the user if it does not exist or update the existing entry.

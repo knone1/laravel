@@ -17,7 +17,7 @@
 		  <div class="col-md-6">
 			  <div class="card">
 			  <a href="">
-				  <img  data-original="http://i.imgur.com/bsCPi0f.jpg" class="lazy" width="240" height="152">
+				  <img data-original="http://i.imgur.com/bsCPi0f.jpg" class="lazy" width="240" height="152">
 				  </a>
 				  <div class="card-block">
 					  <h5 class="card-title">
@@ -49,7 +49,8 @@
 		  <div class="card-block">
 		  @foreach ($recents as $recent)
 		    <p class="card-text">
-		    <img src="" width="30px" height="30px">&ensp;<span class="caret "></span>{{ $recent->title}}<br/>
+		    <img  data-original="http://i.imgur.com/bsCPi0f.jpg" class="thumb" width="30px" height="30px">&ensp; <b>{{ $recent->title}} </b>
+		    <br/>
 		    <small class="text-muted">{{ $recent->created_at }}</small>
 		    </p>
 		    <hr/>
