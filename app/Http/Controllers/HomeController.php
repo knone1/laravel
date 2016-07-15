@@ -27,13 +27,9 @@ class HomeController extends Controller
      */
     public function index(Blogs $blog)
     {
-        //dd($user->find(2)->profile->id);
-        //
+        
         $lists = $blog->listPost();
         $recents = $blog->take(5)->get();
-
-      //  dd($lists);
-
         return view('index')
             ->with('lists', $lists)
             ->with('recents', $recents);
