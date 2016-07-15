@@ -8,15 +8,17 @@ use App\Models\Blogs;
 
 class HomeController extends Controller
 {
+    private $blogs;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Blogs $blogs)
     {
      //   $this->middleware(['guest', 'auth']);
+        $this->blogs = $blogs;
     }
 
     /**
@@ -25,13 +27,23 @@ class HomeController extends Controller
      * @param User $user
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(Blogs $blog)
+    public function index()
     {
         
-        $lists = $blog->listPost();
-        $recents = $blog->take(5)->get();
+        $lists = $this->blogs->listPost();
+        $recents = $lists->take(5);
+
         return view('index')
             ->with('lists', $lists)
             ->with('recents', $recents);
+
+    }
+
+    public function getShow(Blogs $blog, $title)
+    {
+        $links = $this->blogs->scopeVisit($title);
+
+        return view('show')
+            ->with('links', $links);
     }
 }

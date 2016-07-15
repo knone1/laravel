@@ -12,6 +12,8 @@
 */
 Route::get('/', 'HomeController@index');
 
+Route::get('blog/{title}', 'HomeController@getShow')->name('blog-post');
+
 Route::get('/facebook/callback', 'Auth\RegisterController@fbcallback');
 
 Route::auth();

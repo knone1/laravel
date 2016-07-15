@@ -99,18 +99,6 @@ class User extends Authenticatable
         $this->attributes['username'] = strtolower(trim(str_replace(' ', '.', $username)));
     }
 
-    /**
-     * Scope query by name
-     *
-     * @param string title
-     * @return Builder
-     */
-    public function scopeShowUser($query, $name)
-    {
-        $name =  str_replace('-', ' ', $name);
-        return $query->where(compact(['name']));
-    }
-
 
     public function setVerificationAttribute() {
         if (isset($this->attributes['verified']) && $this->attributes['verified']) {

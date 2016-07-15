@@ -55,31 +55,20 @@ class Blogs extends Model
         return  static::orderBy('created_at', 'desc')->get();
     }
 
-    /**
-     * Scope
-     *
-     * @param $query
-     * @param $title
-     * @return mixed
-     */
-    public function scopeShowBlog($query, $title)
-    {
-        $title =  str_replace('-', ' ', $title);
 
-        return $query->where('title', $title);
-    }
-
-    /**
-     * scope
-     *
-     * @param $query
-     * @param $id
-     * @return mixed
-     */
-    public function scopeShowBlogById($query, $id)
+    public function scopeTitle($title)
     {
-        return $query->where('id', '=', $id);
+        return  str_replace(" ", "-", (strtolower($title)));
     }
+    
+
+    public function scopeVisit($title, $columns = ['*'])
+    {
+        $title = str_replace("-", " ", (strtolower($title)));
+
+        return static::where('title', '=', $title)->first($columns);
+    }
+    
 
     /**
      * list post and paginate

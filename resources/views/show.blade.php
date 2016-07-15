@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-      	<div class="col-md-7 offset-md-1">
+      <div class="col-md-7 offset-md-1">
 		  <div class="col-md-12">
 		  @foreach ($lists as $list)
 		  <div class="col-md-6">
@@ -17,7 +17,7 @@
 				  </a>
 				  <div class="card-block">
 					  <h5 class="card-title">
-					  <a href="{{ route('blog-post', ['title'=>$list->scopeTitle($list->title)]) }}"> {{ $list->title }}</a>
+					  <a href=""> {{ $list->title }}</a>
 					  </h5>
 					  <p class="card-text">
 					  	{{ str_limit($list->content, $limit = 80, $end = ' ...') }}
@@ -35,8 +35,8 @@
 			  </div>
 		  </div>
 		  @endforeach
-		  </div>
-      	</div>
+		</div>
+      </div>
 @endsection
 
 @section('js_assets')
