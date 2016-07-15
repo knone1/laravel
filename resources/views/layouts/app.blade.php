@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     @include('includes.head')
-<body id="app-layout">
-
+<body>
+<div class="container" >
+  <div class="row">
+    <div class="col-md-12">
    @include('includes.navbar')
 
     @if(Session::has('status'))
@@ -38,6 +40,11 @@
     @endif
 
     @yield('content')
+
+   @include('includes.sidebar')
+    </div>
+  </div>
+</div>
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
