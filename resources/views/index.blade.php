@@ -37,7 +37,9 @@
 		  @endforeach
 		  </div>
       	</div>
+    @include('includes.sidebar')
 @endsection
+
 
 @section('js_assets')
 @parent

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Models\Blogs;
+use Route;
 
 class HomeController extends Controller
 {
@@ -39,11 +40,16 @@ class HomeController extends Controller
 
     }
 
-    public function getShow(Blogs $blog, $title)
+    public function getShow($title)
     {
+
+        $disqus = new \Disqus(env('DISQUSS_API_SECRET'));
+
         $links = $this->blogs->scopeVisit($title);
 
+
         return view('show')
-            ->with('links', $links);
+            ->with('links', $links)
+            ->with('disqus', $disqus);
     }
 }

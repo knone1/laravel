@@ -161,12 +161,12 @@ return [
         Illuminate\Session\SessionServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
-        Illuminate\View\ViewServiceProvider::class,
-
+        Illuminate\View\ViewServiceProvider::class, 
         /*
          * Add on here
          */
         SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class,
+        Roumen\Disqus\DisqusServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -38,17 +38,15 @@
             </ul>
         </div>
     @endif
-
     @yield('content')
-
-   @include('includes.sidebar')
     </div>
   </div>
 </div>
-
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="/js/bootstrap.js"></script>
     @include('includes.footer')
+    
+ <script id="dsq-count-scr" src="//zenfoneph.disqus.com/count.js" async></script>
 </body>
 </html>
