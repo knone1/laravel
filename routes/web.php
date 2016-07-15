@@ -11,8 +11,8 @@
 |
 */
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('logout', 'Auth\LoginController@logout');
 
+Route::get('logout', 'Auth\LoginController@logout');
 
 Route::get('blog/{title}', 'HomeController@getShow')->name('blog-post');
 
