@@ -11,7 +11,7 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-         DB::table('settings')->insert([
+         DB::table('roles')->insert([
             'role_user_id' => '1', //set to user faker admin
             'role_title' => 'Administrator',
             'role_level' => '5' //5 admin 4 moderator 3 what you want to 2 and 1, 0 = user
