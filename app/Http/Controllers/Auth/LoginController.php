@@ -22,6 +22,8 @@ class LoginController extends Controller
 
     use AuthenticatesUsers, FbTrait;
 
+    //protected $maxAttempts = ; // Amount of bad attempts user can make
+
     /**
      * Where to redirect users after login / registration.
      *

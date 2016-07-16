@@ -41,8 +41,9 @@ class HomeController extends Controller
 
     public function getShow($title)
     {
-        
         $links = $this->blogs->findTitle($this->blogs, $title);
+
+        //dd($links->title);
 
         $disqus = array(
             'shortname' => env('DISQUS_SHORTNAME'),

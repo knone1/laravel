@@ -85,6 +85,3 @@
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 
-@section('js_assets')
-
-@show
