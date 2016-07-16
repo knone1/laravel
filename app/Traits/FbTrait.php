@@ -75,9 +75,9 @@ trait FbTrait
          */
         if ($user_check === null || $fb_check === null) {
 
-            $profile->newProfile($facebook_user, $token);
+            $profile->newProfile($profile, $facebook_user, $token);
 
-            $this->guard()->login($user->newUser($facebook_user));
+            $this->guard()->login($user->newUser($user, $facebook_user));
 
             return redirect($this->redirectPath());
 

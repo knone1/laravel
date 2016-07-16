@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Models\Blogs;
-use Route;
 
 class HomeController extends Controller
 {
@@ -31,7 +30,7 @@ class HomeController extends Controller
     public function index()
     {
         
-        $lists = $this->blogs->listPost();
+        $lists = $this->blogs->listPost($this->blogs);
         $recents = $lists->take(5);
 
         return view('index')

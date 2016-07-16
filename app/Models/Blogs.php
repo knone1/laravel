@@ -50,9 +50,9 @@ class Blogs extends Model
      *
      * @return mixed
      */
-    public function listBlog()
+    public function listBlog($query)
     {
-        return  static::orderBy('created_at', 'desc')->get();
+        return  $query->orderBy('created_at', 'desc')->get();
     }
 
 
@@ -62,11 +62,11 @@ class Blogs extends Model
     }
     
 
-    public function scopeVisit($title, $columns = ['*'])
+    public function scopeVisit($query, $title, $columns = ['*'])
     {
         $title = str_replace("-", " ", (strtolower($title)));
 
-        return static::where('title', '=', $title)->first($columns);
+        return $query->where('title', '=', $title)->first($columns);
     }
     
 
@@ -75,9 +75,9 @@ class Blogs extends Model
      *
      * @return mixed
      */
-    public function listPost()
+    public function listPost($query)
     {
-    	return static::orderBy('created_at', 'desc')->paginate(10);
+    	return $query->orderBy('created_at', 'desc')->paginate(10);
     }
 
 }

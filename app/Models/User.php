@@ -114,7 +114,7 @@ class User extends Authenticatable
      * @param $facebook_user
      * @return static
      */
-    public function newUser($facebook_user)
+    public function newUser($query, $facebook_user)
     {
         /*
         Mail::send('emails.welcome', $data, function($message) use ($data)
@@ -124,8 +124,7 @@ class User extends Authenticatable
             $message->to($facebook_user['email']);
         });
         */
-
-        return static::create([
+        return $query->create([
             'username' => $facebook_user['name'],
             'email' => $facebook_user['email'],
             'facebook_user_id' => $facebook_user['id'],

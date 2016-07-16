@@ -103,11 +103,11 @@ class Profiles extends Model
      * @param $token
      * @return static
      */
-    public function newProfile($facebook_user, $token)
+    public function newProfile($query, $facebook_user, $token)
     {
        
        
-        return static::create([
+        return $query->create([
                 'facebook_user_id' => $facebook_user['id'],
                 'first_name' => $facebook_user['first_name'],
                 'last_name' => $facebook_user['last_name'],
