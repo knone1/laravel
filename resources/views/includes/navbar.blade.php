@@ -31,7 +31,7 @@
     @else
                 <li class="nav-item dropdown" style="margin-top: -10px">
                 <a href="#" class="nav-link btn  dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1" role="button" " aria-haspopup="true" aria-expanded="false">
-                <img src="{{ Auth::user()->profile->pic }}" width="20px" height="20px">&ensp;<span class="caret "></span>{{ Auth::user()->username }}</a>
+                <img src="{{ isset(Auth::user()->profile->pic) ? Auth::user()->profile->pic : '' }}" width="20px" height="20px">&ensp;<span class="caret "></span>{{ Auth::user()->username }}</a>
                 <ul class="nav-item dropdown-menu" aria-labelledby="dropdownMenu1">
                 @if ( Auth::user()->isAdmin(Auth::user()->id) )
                 <li><a class="nav-link dropdown-item" href="{{ route('admin.index') }}">Panel Admin</a></li>
