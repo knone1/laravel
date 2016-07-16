@@ -27,18 +27,17 @@
     <p class="card-text">
     	{{ $links->content }}
     </p>
-    <p class="card-text">
   </div>
-
-
-
-
+    </div>
 <div id="disqus_thread"></div>
+
   <script type="text/javascript">
-    var disqus_shortname = 'testzzzz';
-      var disqus_identifier = '{{ $links->title }}';
-      var disqus_developer = 1;
-      var disqus_url = 'http://bazztord.viewdns.net/blog/test-blog-4';
+
+      var disqus_shortname = '{{ $disqus['shortname'] }}';
+      var disqus_title = '{{ $disqus['title'] }}';
+      var disqus_url = '{{ route('blog-post', ['title'=>$links->scopeTitle($links->title)]) }}';
+      var disqus_identifier = '{{ $disqus['identifier'] }}';
+
     (function() {
       var dsq = document.createElement('script');
       dsq.type = 'text/javascript';
@@ -47,17 +46,14 @@
       (document.getElementsByTagName('head')[0] ||
         document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
+
   </script>
+
   <noscript>
     Please enable JavaScript to view the
     <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
   </noscript>
-  <a href="http://disqus.com" class="dsq-brlink">
-    comments powered by <span class="logo-disqus">Disqus</span>
-  </a>
-    </p>
-</div>
-		</div>
+      </div>
       </div>
 @endsection
 

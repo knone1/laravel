@@ -10,8 +10,7 @@
         "facebook/php-sdk-v4": "^5.2",
         "sammyk/laravel-facebook-sdk": "^3.0",
         "watson/sitemap": "2.0.*",
-        "suin/php-rss-writer": "^1.4",
-        "roumen/disqus": "1.*"
+        "suin/php-rss-writer": "^1.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
