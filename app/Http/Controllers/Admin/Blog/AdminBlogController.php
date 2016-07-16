@@ -29,7 +29,7 @@ class AdminBlogController extends Controller
      */
     public function index()
     {
-        $posts = $this->blog->listPost();
+        $posts = $this->blog->listPost($this->blog);
 
         return view('admin.blog.index')->with('posts', $posts);
     }

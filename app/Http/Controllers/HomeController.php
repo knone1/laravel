@@ -41,11 +41,9 @@ class HomeController extends Controller
 
     public function getShow($title)
     {
-
         $disqus = new \Disqus(env('DISQUSS_API_SECRET'));
 
-        $links = $this->blogs->scopeVisit($title);
-
+        $links = $this->blogs->findTitle($this->blogs, $title);
 
         return view('show')
             ->with('links', $links)

@@ -15,7 +15,8 @@
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="{{ URL::asset('assets/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="{{ URL::asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- AdminLTE App -->

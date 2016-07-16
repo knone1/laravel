@@ -62,7 +62,7 @@ class Blogs extends Model
     }
     
 
-    public function scopeVisit($query, $title, $columns = ['*'])
+    public function findTitle($query, $title, $columns = ['*'])
     {
         $title = str_replace("-", " ", (strtolower($title)));
 
