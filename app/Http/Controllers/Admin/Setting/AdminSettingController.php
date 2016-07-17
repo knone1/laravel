@@ -84,16 +84,17 @@ class AdminSettingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, Settings $settings)
-    {
     
-        $this->validate($request, [
-        'setting_value' => 'required'
-    ]);
+    public function update(Request $request, $id)
+    {
 
-        $set = Settings::find($id);
+        $arr = $request->except(['_token', 'id', '_method']);
 
-        $set->update($request->all());
+        foreach ($arr as $key => $value)
+        {
+          Settings::where('setting_name', '=', $key)
+                        ->update(['setting_value' => $value]);
+        }
 
         return redirect()->route('admin_setting.create')->with('status', 'Setting update');
     }

@@ -25,7 +25,7 @@
    </div>
   <div class="card-block">
     <p class="card-text">
-    	{{ $links->content }}
+    	{!! $links->content !!}
     </p>
   </div>
     </div>

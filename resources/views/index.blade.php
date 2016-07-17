@@ -20,7 +20,7 @@
 					  <a href="{{ route('blog-post', ['title'=>$list->scopeTitle($list->title)]) }}"> {{ $list->title }}</a>
 					  </h5>
 					  <p class="card-text">
-					  	{{ str_limit($list->content, $limit = 80, $end = ' ...') }}
+					  	{!! str_limit($list->content, $limit = 80, $end = ' ...') !!}
 					  </p>
 					  <div class="col-md-6">
 						  <small class="text-muted">

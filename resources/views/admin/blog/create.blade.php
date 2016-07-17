@@ -7,7 +7,6 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      
       <!-- Your Page Content Here -->
 <div class="row">
         <!-- left column -->
@@ -31,7 +30,6 @@
             <!-- form start -->
 <div id="form-response"></div>
                 <form method="POST" class="form-editor" id="form-editor" action="{{ route('blog.store') }}" accept-charset="UTF-8">
-
                     {{ csrf_field() }}
                     <h6 class="form-editor-heading">Blog Title</h6>
                     <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -60,7 +58,6 @@
               <!-- /input-group -->
             </div>
             </div>
-
         <div class="col-md-4">
         <div class="box box-primary">
             <div class="box-header with-border">
@@ -72,11 +69,8 @@
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-
     </section>
-
     <!-- Main content -->
-
     <!-- /.content -->
   </div>
 @endsection

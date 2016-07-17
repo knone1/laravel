@@ -166,7 +166,6 @@ return [
          * Add on here
          */
         SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class,
-        Roumen\Disqus\DisqusServiceProvider::class,
 
         /*
          * Application Service Providers...
