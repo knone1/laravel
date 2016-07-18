@@ -7,18 +7,19 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Settings;
-use DB;
 
 class AdminSettingController extends Controller
 {
+    protected $settings;
 
     /**
      * AdminController constructor.
      * middleware auth admin
      */
-    public function __construct()
+    public function __construct(Settings $settings)
     {
            $this->middleware(['auth', 'admin']);
+           $this->settings = $settings;
     }
 
     /**
@@ -39,7 +40,7 @@ class AdminSettingController extends Controller
     public function create()
     {
 
-        $values = Settings::all();
+        $values = $this->settings->all();
         return view('admin.setting.sitecreate')->with('values', $values);
 
     }
@@ -92,8 +93,7 @@ class AdminSettingController extends Controller
 
         foreach ($arr as $key => $value)
         {
-          Settings::where('setting_name', '=', $key)
-                        ->update(['setting_value' => $value]);
+          $this->settings->setSetting($key, $value);
         }
 
         return redirect()->route('admin_setting.create')->with('status', 'Setting update');

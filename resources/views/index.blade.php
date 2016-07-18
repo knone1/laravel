@@ -35,6 +35,8 @@
 			  </div>
 		  </div>
 		  @endforeach
+		  <hr>
+		  {{ $page->links() }}
 		  </div>
       	</div>
     @include('includes.sidebar')
